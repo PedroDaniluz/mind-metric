@@ -1,16 +1,13 @@
 export default {
   colors: {
     primary: '#162533',
-    secundary: '#39535A',
+    secondary: '#39535A',
     background: '#f5f5f5',
   },
   fonts: {
-    light: 'Poppins_300Light',
-    regular: 'Poppins_400Regular',
-    medium: 'Poppins_500Medium',
-    semiBold: 'Poppins_600SemiBold',
-    bold: 'Poppins_700Bold',
-    extraBold: 'Poppins_800ExtraBold',
+    light: 'Lato_300Light',
+    regular: 'Lato_400Regular',
+    bold: 'Lato_700Bold',
   },
   shadows: {
     default: {
