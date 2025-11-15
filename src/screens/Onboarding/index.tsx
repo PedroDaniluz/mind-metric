@@ -9,7 +9,7 @@ import { PageHeader } from '../../components/PageHeader'
 import { Button } from '../../components/Button'
 import { NavigationProps } from './types'
 import { PageContainer } from '../../components/PageContainter'
-import { CheckboxInput } from '../../components/CheckboxInput'
+import { CheckboxInput } from './components/CheckboxInput'
 
 const schema = z.object({
   skills: z.array(z.string()).length(5, 'Selecione 5 competências'),

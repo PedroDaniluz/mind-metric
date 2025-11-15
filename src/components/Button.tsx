@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native'
+import { Pressable, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import theme from '../styles/theme'
 import { css } from 'styled-components'
@@ -11,6 +11,7 @@ interface ButtonProps {
   disabled?: boolean
   variant?: Variant
   icon?: React.ReactNode
+  style?: ViewStyle | ViewStyle[]
 }
 
 export function Button({
@@ -19,9 +20,14 @@ export function Button({
   disabled = false,
   variant = 'default',
   icon,
+  style,
 }: ButtonProps) {
   return (
-    <Pressable onPress={onClick} style={{ width: '100%' }} disabled={disabled}>
+    <Pressable
+      style={{ ...style, width: '100%' }}
+      onPress={onClick}
+      disabled={disabled}
+    >
       {({ pressed }) => (
         <StyledButton $pressed={pressed} $variant={variant}>
           {icon && icon}
@@ -68,7 +74,6 @@ const StyledButton = styled.View<{
   opacity: ${({ $pressed }) => ($pressed ? 0.8 : 1)};
   ${({ $variant }) => buttonVariantStyles[$variant]}
 `
-
 const ButtonText = styled.Text<{ $variant: Variant }>`
   font-family: ${theme.fonts.bold};
   ${({ $variant }) => textVariantStyles[$variant]}

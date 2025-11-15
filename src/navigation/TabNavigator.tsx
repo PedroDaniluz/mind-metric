@@ -2,11 +2,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Ionicons } from '@expo/vector-icons'
 import theme from '../styles/theme'
+import { BlurView } from 'expo-blur'
 
 import Home from '../screens/Home'
 import ActivityForm from '../screens/ActivityForm'
 import History from '../screens/History'
 import styled from 'styled-components/native'
+import { StyleSheet } from 'react-native'
 
 const Tab = createBottomTabNavigator()
 const HomeStack = createNativeStackNavigator()
@@ -36,6 +38,13 @@ export default function TabRoutes() {
           height: '100%',
           width: '100%',
         },
+        tabBarBackground: () => (
+          <BlurView
+            intensity={40}
+            tint="light"
+            style={{ ...StyleSheet.absoluteFillObject, borderRadius: 24 }}
+          />
+        ),
       }}
     >
       <Tab.Screen
@@ -80,7 +89,6 @@ export const tabBarDefaultStyle = {
   height: 72,
   bottom: 20,
   borderRadius: 24,
-  backgroundColor: theme.colors.background,
   borderTopWidth: 0,
   ...theme.shadows.default,
 }

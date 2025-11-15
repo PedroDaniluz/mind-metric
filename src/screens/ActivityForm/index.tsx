@@ -2,8 +2,8 @@ import { PageContainer } from '../../components/PageContainter'
 import { NavigationProps } from './types'
 import { useNavigation } from '@react-navigation/native'
 import { PageHeader } from '../../components/PageHeader'
-import { BackButton } from '../../components/BackButton'
-import { TextInput } from '../../components/TextInput'
+import { BackButton } from './components/BackButton'
+import { TextInput } from './components/TextInput'
 import { z } from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -14,8 +14,8 @@ import { tabBarDefaultStyle } from '../../navigation/TabNavigator'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
 import { options } from '../../constants/options'
-import { SliderInput } from '../../components/SliderInput'
-import { StarRatingInput } from '../../components/StarRatingInput'
+import { SliderInput } from './components/SliderInput'
+import { StarRatingInput } from './components/StarRatingInput'
 
 const schema = z
   .object({
@@ -46,14 +46,14 @@ export default function ActivityForm() {
     }
   }, [])
 
-  const { skills, records } = useAsyncStorageHook()
+  const { rawSkills, rawRecords } = useAsyncStorageHook()
 
   const selectedSkills = useMemo(
     () =>
-      (skills ?? [])
+      (rawSkills ?? [])
         .map((value) => options.find((opt) => opt.value === value))
         .filter((opt): opt is { label: string; value: string } => !!opt),
-    [skills]
+    [rawSkills]
   )
 
   const {
@@ -82,7 +82,7 @@ export default function ActivityForm() {
     }
 
     try {
-      const updated = [...(records ?? []), newRecord]
+      const updated = [...(rawRecords ?? []), newRecord]
       await AsyncStorage.setItem('records', JSON.stringify(updated))
       navigation.goBack()
     } catch (error) {
@@ -141,14 +141,11 @@ export default function ActivityForm() {
         )}
       />
 
-      <ButtonContainer>
-        <Button text="Salvar Atividade" onClick={handleSubmit(onSubmit)} />
-      </ButtonContainer>
+      <StyledButton text="Salvar Atividade" onClick={handleSubmit(onSubmit)} />
     </PageContainer>
   )
 }
 
-const ButtonContainer = styled.View`
+const StyledButton = styled(Button)`
   margin-top: auto;
-  width: 100%;
 `

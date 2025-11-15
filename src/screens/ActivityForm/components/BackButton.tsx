@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
-import theme from '../styles/theme'
+import theme from '../../../styles/theme'
 
 interface BackButtonProps {
   onPress: () => void

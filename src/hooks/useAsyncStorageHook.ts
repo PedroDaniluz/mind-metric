@@ -10,25 +10,29 @@ interface RecordType {
 }
 
 export function useAsyncStorageHook(deps: unknown[] = []) {
-  const [skills, setSkills] = useState<string[] | null>()
-  const [records, setRecords] = useState<RecordType[] | null>()
+  const [rawSkills, setRawSkills] = useState<string[] | null>(null)
+  const [rawRecords, setRawRecords] = useState<RecordType[] | null>()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     AsyncStorage.getItem('skills').then((value) => {
-      setSkills(value ? JSON.parse(value) : null)
+      setRawSkills(value ? JSON.parse(value) : [])
+      setLoading(false)
     })
   }, deps)
 
   useEffect(() => {
     AsyncStorage.getItem('records').then((value) => {
-      setRecords(value ? JSON.parse(value) : null)
+      setRawRecords(value ? JSON.parse(value) : null)
     })
   }, deps)
 
   return {
-    skills,
-    records,
-    showOnboarding: skills === null,
-    hasActivities: !!records && records.length > 0,
+    rawSkills,
+    rawRecords,
+    loading,
+    showOnboarding: Array.isArray(rawSkills) && rawSkills.length === 0,
+    hasActivities: Array.isArray(rawRecords) && rawRecords.length > 0,
   }
 }

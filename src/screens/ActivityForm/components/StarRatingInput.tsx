@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
-import theme from '../styles/theme'
+import theme from '../../../styles/theme'
 
 interface StarRatingInputProps {
   title: string

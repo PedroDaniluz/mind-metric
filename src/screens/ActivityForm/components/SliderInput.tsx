@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import theme from '../styles/theme'
+import theme from '../../../styles/theme'
 import { View } from 'react-native'
 import Slider from '@react-native-community/slider'
 

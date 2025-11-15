@@ -7,9 +7,9 @@ import { useAsyncStorageHook } from '../hooks/useAsyncStorageHook'
 const Stack = createNativeStackNavigator()
 
 export default function Routes() {
-  const { showOnboarding } = useAsyncStorageHook()
+  const { showOnboarding, loading } = useAsyncStorageHook()
 
-  if (showOnboarding === null) {
+  if (loading) {
     return null
   }
 
