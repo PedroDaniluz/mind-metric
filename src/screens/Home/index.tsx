@@ -8,24 +8,42 @@ import {
   getCurrentWeekInterval,
 } from '../../ultils/dateHelpers'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
-import { PageContainer } from '../../components/PageContainter'
 import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { NavigationProps } from './types'
+import { RadarChartCard } from './components/RadarChartCard'
+import { DonutChartCard } from './components/DonutChart'
+import { StyledPageContainer } from './styles'
 
 export default function Home() {
   const navigation = useNavigation<NavigationProps>()
   const isFocused = useIsFocused()
 
   const { start, end } = getCurrentWeekInterval()
-  const { hasActivities } = useAsyncStorageHook([isFocused])
+  const { hasActivities, mappedSkills, mappedRecords } = useAsyncStorageHook([
+    isFocused,
+  ])
 
   return (
-    <PageContainer>
+    <StyledPageContainer>
       <PageHeader
         title="Dashboard"
         subtitle={`Semana atual: ${formatDateToDDMM(start)} - ${formatDateToDDMM(end)}`}
       />
-      {!hasActivities && <WarningCard />}
+      {!hasActivities ? (
+        <WarningCard />
+      ) : (
+        <>
+          <DonutChartCard
+            mappedSkills={mappedSkills}
+            mappedRecords={mappedRecords}
+          />
+          <RadarChartCard
+            mappedSkills={mappedSkills}
+            mappedRecords={mappedRecords}
+          />
+        </>
+      )}
+
       <Button
         text="Registrar atividade"
         variant="bordered"
@@ -38,6 +56,6 @@ export default function Home() {
         }
         onClick={() => navigation.navigate('ActivityForm')}
       />
-    </PageContainer>
+    </StyledPageContainer>
   )
 }

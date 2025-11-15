@@ -9,11 +9,10 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import styled from 'styled-components/native'
 import { Button } from '../../components/Button'
-import { useLayoutEffect, useMemo } from 'react'
+import { useLayoutEffect } from 'react'
 import { tabBarDefaultStyle } from '../../navigation/TabNavigator'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
-import { options } from '../../constants/options'
 import { SliderInput } from './components/SliderInput'
 import { StarRatingInput } from './components/StarRatingInput'
 
@@ -46,15 +45,7 @@ export default function ActivityForm() {
     }
   }, [])
 
-  const { rawSkills, rawRecords } = useAsyncStorageHook()
-
-  const selectedSkills = useMemo(
-    () =>
-      (rawSkills ?? [])
-        .map((value) => options.find((opt) => opt.value === value))
-        .filter((opt): opt is { label: string; value: string } => !!opt),
-    [rawSkills]
-  )
+  const { mappedSkills, rawRecords } = useAsyncStorageHook()
 
   const {
     control,
@@ -66,8 +57,8 @@ export default function ActivityForm() {
   })
 
   async function onSubmit(data: TFormData) {
-    const skillsPayload = selectedSkills
-      .map((skill) => ({
+    const skillsPayload = mappedSkills
+      ?.map((skill) => ({
         skill: skill.value,
         intensity: data.skillIntensities[skill.value],
       }))
@@ -116,7 +107,7 @@ export default function ActivityForm() {
           return (
             <SliderInput
               title="Competências trabalhadas"
-              options={selectedSkills}
+              options={mappedSkills || []}
               value={value}
               setValue={onChange}
               errorMessage={

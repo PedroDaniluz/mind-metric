@@ -1,34 +1,26 @@
-import { PageContainer } from '../../components/PageContainter'
 import { PageHeader } from '../../components/PageHeader'
 import { WarningCard } from '../../components/WarningCard'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
 import { useIsFocused } from '@react-navigation/native'
-import { options } from '../../constants/options'
-import { CardShadow } from '../../components/CardShadow'
-import styled from 'styled-components/native'
-import theme from '../../styles/theme'
 import { Ionicons } from '@expo/vector-icons'
+import {
+  ActivityDate,
+  ActivityTitle,
+  HistoryCardShadow,
+  HistoryContent,
+  RatingBarContainer,
+  RatingBarFill,
+  SkillItem,
+  SkillTitle,
+  StyledPageContainer,
+} from './styles'
 
 export default function History() {
   const isFocused = useIsFocused()
-  const { hasActivities, rawRecords } = useAsyncStorageHook([isFocused])
-
-  // assign labels to skills in records
-  const mappedRecords = rawRecords?.map((record) => ({
-    activity: record.title,
-    date: record.createdAt,
-    skills: record.skills.map((skillObj) => {
-      const option = options.find((o) => o.value === skillObj.skill)
-      return {
-        ...skillObj,
-        label: option ? option.label : skillObj.skill,
-      }
-    }),
-    rating: record.selfRating,
-  }))
+  const { hasActivities, mappedRecords } = useAsyncStorageHook([isFocused])
 
   return (
-    <PageContainer>
+    <StyledPageContainer>
       <PageHeader
         title="Histórico"
         subtitle="Registro detalhado de suas atividades"
@@ -76,48 +68,6 @@ export default function History() {
           </HistoryCardShadow>
         ))
       )}
-    </PageContainer>
+    </StyledPageContainer>
   )
 }
-
-const HistoryCardShadow = styled(CardShadow)`
-  padding: 12px;
-  flex-direction: row;
-`
-const HistoryContent = styled.View`
-  flex: 1;
-  gap: 2px;
-`
-const ActivityTitle = styled.Text`
-  font-family: ${theme.fonts.bold};
-  font-size: 16px;
-  color: ${theme.colors.primary};
-`
-const ActivityDate = styled.Text`
-  font-family: ${theme.fonts.regular};
-  font-size: 12px;
-  color: ${theme.colors.secondary};
-`
-const SkillTitle = styled.Text`
-  font-family: ${theme.fonts.regular};
-  font-size: 14px;
-  color: ${theme.colors.primary};
-`
-const SkillItem = styled.Text`
-  font-family: ${theme.fonts.regular};
-  font-size: 12px;
-  color: ${theme.colors.secondary};
-`
-const RatingBarContainer = styled.View`
-  width: 10%;
-  height: 100%;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  justify-content: flex-end;
-`
-const RatingBarFill = styled.View`
-  height: 100%;
-  background-color: ${theme.colors.primary};
-  border-radius: 4px;
-`
