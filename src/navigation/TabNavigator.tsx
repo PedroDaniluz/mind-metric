@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Ionicons } from '@expo/vector-icons'
 import theme from '../styles/theme'
 
-// Telas
 import Home from '../screens/Home'
 import ActivityForm from '../screens/ActivityForm'
 import History from '../screens/History'
@@ -29,17 +28,7 @@ export default function TabRoutes() {
         headerShown: false,
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: 'gray',
-        tabBarStyle: {
-          position: 'absolute',
-          left: 20,
-          right: 20,
-          height: 72,
-          bottom: 20,
-          borderRadius: 24,
-          backgroundColor: theme.colors.background,
-          borderTopWidth: 0,
-          ...theme.shadows.default,
-        },
+        tabBarStyle: tabBarDefaultStyle,
         tabBarItemStyle: {
           paddingVertical: 8,
         },
@@ -81,6 +70,19 @@ export default function TabRoutes() {
       ></Tab.Screen>
     </Tab.Navigator>
   )
+}
+
+// used to reset style when needed
+export const tabBarDefaultStyle = {
+  position: 'absolute' as const,
+  left: 20,
+  right: 20,
+  height: 72,
+  bottom: 20,
+  borderRadius: 24,
+  backgroundColor: theme.colors.background,
+  borderTopWidth: 0,
+  ...theme.shadows.default,
 }
 
 const IconWrapper = styled.View<{ $focused?: boolean }>`

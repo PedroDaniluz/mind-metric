@@ -1,13 +1,12 @@
 import styled from 'styled-components/native'
 import theme from '../styles/theme'
 
-export default function PageHeader({
-  title,
-  subtitle,
-}: {
+interface PageHeaderProps {
   title: string
   subtitle?: string
-}) {
+}
+
+export function PageHeader({ title, subtitle }: PageHeaderProps) {
   return (
     <Header>
       <PageTitle>{title}</PageTitle>
@@ -23,7 +22,7 @@ const Header = styled.View`
   width: 100%;
 `
 const PageTitle = styled.Text`
-  font-family: ${theme.fonts.bold};
+  font-family: ${theme.fonts.black};
   font-size: 24px;
   color: ${theme.colors.primary};
 `

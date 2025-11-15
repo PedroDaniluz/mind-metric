@@ -2,17 +2,17 @@ import styled from 'styled-components/native'
 import theme from '../styles/theme'
 import { ViewStyle } from 'react-native'
 
-export default function CardShadow({
-  children,
-  style,
-}: {
+interface CardShadowProps {
   children: React.ReactNode
   style?: ViewStyle | ViewStyle[]
-}) {
+}
+
+export function CardShadow({ children, style }: CardShadowProps) {
   return <Container style={style}>{children}</Container>
 }
 
 const Container = styled.View`
+  width: 100%;
   background-color: ${theme.colors.background};
   border-radius: 8px;
   shadow-color: ${theme.shadows.default.shadowColor};

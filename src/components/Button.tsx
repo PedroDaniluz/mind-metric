@@ -3,17 +3,17 @@ import styled from 'styled-components/native'
 import theme from '../styles/theme'
 import { css } from 'styled-components'
 
-type TVariant = 'default' | 'bordered'
+type Variant = 'default' | 'bordered'
 
 interface ButtonProps {
   text: string
   onClick: () => void
   disabled?: boolean
-  variant?: TVariant
+  variant?: Variant
   icon?: React.ReactNode
 }
 
-export default function Button({
+export function Button({
   text,
   onClick,
   disabled = false,
@@ -60,7 +60,7 @@ const textVariantStyles = {
 
 const StyledButton = styled.View<{
   $pressed: boolean
-  $variant: TVariant
+  $variant: Variant
 }>`
   align-items: center;
   width: 100%;
@@ -69,7 +69,7 @@ const StyledButton = styled.View<{
   ${({ $variant }) => buttonVariantStyles[$variant]}
 `
 
-const ButtonText = styled.Text<{ $variant: TVariant }>`
+const ButtonText = styled.Text<{ $variant: Variant }>`
   font-family: ${theme.fonts.bold};
   ${({ $variant }) => textVariantStyles[$variant]}
 `
