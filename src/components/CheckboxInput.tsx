@@ -47,7 +47,7 @@ const CheckBoxContainer = styled.View`
 `
 const CheckBoxTitle = styled.Text`
   font-family: ${theme.fonts.bold};
-  font-size: 14px;
+  font-size: 16px;
   color: ${theme.colors.primary};
 `
 const CheckboxRow = styled.Pressable`

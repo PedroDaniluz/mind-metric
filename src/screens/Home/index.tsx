@@ -9,14 +9,15 @@ import {
 } from '../../ultils/dateHelpers'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
 import { PageContainer } from '../../components/PageContainter'
-import { useNavigation } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { NavigationProps } from './types'
 
 export default function Home() {
   const navigation = useNavigation<NavigationProps>()
+  const isFocused = useIsFocused()
 
   const { start, end } = getCurrentWeekInterval()
-  const { hasActivities } = useAsyncStorageHook()
+  const { hasActivities } = useAsyncStorageHook([isFocused])
 
   return (
     <PageContainer>

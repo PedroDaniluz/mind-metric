@@ -3,9 +3,11 @@ import { PageContainer } from '../../components/PageContainter'
 import { PageHeader } from '../../components/PageHeader'
 import { WarningCard } from '../../components/WarningCard'
 import { useAsyncStorageHook } from '../../hooks/useAsyncStorageHook'
+import { useIsFocused } from '@react-navigation/native'
 
 export default function History() {
-  const { hasActivities } = useAsyncStorageHook()
+  const isFocused = useIsFocused()
+  const { hasActivities } = useAsyncStorageHook([isFocused])
   return (
     <PageContainer>
       <PageHeader

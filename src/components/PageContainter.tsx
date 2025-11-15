@@ -1,4 +1,4 @@
-import { ViewStyle } from 'react-native'
+import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 interface PageContainerProps {
@@ -7,11 +7,15 @@ interface PageContainerProps {
 }
 
 export function PageContainer({ children, style }: PageContainerProps) {
-  return <Container style={style}>{children}</Container>
+  return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <Container style={style}>{children}</Container>
+    </ScrollView>
+  )
 }
 
 const Container = styled.View`
-  flex: 1;
+  min-height: 100%;
   padding: 76px 40px;
   gap: 24px;
   overflow: hidden;

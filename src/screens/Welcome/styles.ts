@@ -3,7 +3,6 @@ import { PageContainer } from '../../components/PageContainter'
 
 export const StyledPageContainer = styled(PageContainer)`
   justify-content: space-between;
-  gap: 0px;
   align-items: center;
 `
 
