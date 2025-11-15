@@ -1,40 +1,75 @@
 import { Pressable } from 'react-native'
 import styled from 'styled-components/native'
 import theme from '../styles/theme'
+import { css } from 'styled-components'
+
+type TVariant = 'default' | 'bordered'
 
 interface ButtonProps {
   text: string
   onClick: () => void
   disabled?: boolean
+  variant?: TVariant
+  icon?: React.ReactNode
 }
 
 export default function Button({
   text,
   onClick,
   disabled = false,
+  variant = 'default',
+  icon,
 }: ButtonProps) {
   return (
     <Pressable onPress={onClick} style={{ width: '100%' }} disabled={disabled}>
       {({ pressed }) => (
-        <StyledButton $pressed={pressed}>
-          <ButtonText>{text}</ButtonText>
+        <StyledButton $pressed={pressed} $variant={variant}>
+          {icon && icon}
+          <ButtonText $variant={variant}>{text}</ButtonText>
         </StyledButton>
       )}
     </Pressable>
   )
 }
 
-const StyledButton = styled.View<{ $pressed: boolean }>`
-  width: 100%;
-  background-color: ${theme.colors.primary};
-  padding: 16px 0;
-  border-radius: 6px;
+const buttonVariantStyles = {
+  default: css`
+    background-color: ${theme.colors.primary};
+    padding: 16px 0;
+    border: none;
+  `,
+  bordered: css`
+    background-color: transparent;
+    padding: 16px;
+    border: 2px solid ${theme.colors.primary};
+    flex-direction: row;
+    gap: 8px;
+  `,
+}
+
+const textVariantStyles = {
+  default: css`
+    color: ${theme.colors.background};
+    font-size: 14px;
+  `,
+  bordered: css`
+    color: ${theme.colors.primary};
+    font-size: 16px;
+  `,
+}
+
+const StyledButton = styled.View<{
+  $pressed: boolean
+  $variant: TVariant
+}>`
   align-items: center;
-  opacity: ${({ $pressed }) => ($pressed ? 0.9 : 1)};
+  width: 100%;
+  border-radius: 8px;
+  opacity: ${({ $pressed }) => ($pressed ? 0.8 : 1)};
+  ${({ $variant }) => buttonVariantStyles[$variant]}
 `
 
-const ButtonText = styled.Text`
-  font-size: 14px;
+const ButtonText = styled.Text<{ $variant: TVariant }>`
   font-family: ${theme.fonts.bold};
-  color: ${theme.colors.background};
+  ${({ $variant }) => textVariantStyles[$variant]}
 `

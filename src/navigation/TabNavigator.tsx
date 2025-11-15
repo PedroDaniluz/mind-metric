@@ -38,11 +38,7 @@ export default function TabRoutes() {
           borderRadius: 24,
           backgroundColor: theme.colors.background,
           borderTopWidth: 0,
-          elevation: 8,
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.12,
-          shadowRadius: 12,
+          ...theme.shadows.default,
         },
         tabBarItemStyle: {
           paddingVertical: 8,
@@ -97,10 +93,9 @@ const IconWrapper = styled.View<{ $focused?: boolean }>`
     $focused &&
     `
     background-color: ${theme.colors.primary};
-    shadow-color: #000;
-    shadow-offset: 0px 6px;
-    shadow-opacity: 0.18;
-    shadow-radius: 10px;
-    elevation: 8;
+    shadow-color: ${theme.shadows.default.shadowColor};
+    shadow-offset: ${theme.shadows.default.shadowOffset.width}px ${theme.shadows.default.shadowOffset.height}px;
+    shadow-radius: ${theme.shadows.default.shadowRadius}px;
+    elevation: ${theme.shadows.default.elevation};
   `}
 `

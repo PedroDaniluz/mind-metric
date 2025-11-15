@@ -1,25 +1,29 @@
+import { useEffect, useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import Welcome from '../screens/Welcome'
 import Onboarding from '../screens/Onboarding'
 import TabRoutes from './TabNavigator'
-// import { useEffect, useState } from 'react'
-// import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createNativeStackNavigator()
 
 export default function Routes() {
-  // const [initialRoute, setInitialRoute] = useState<string | null>(null) -- definir localStorage
+  const [initialRoute, setInitialRoute] = useState<string | null>(null)
 
-  // useEffect(() => {
-  //   AsyncStorage.getItem('onboardingDone').then((value) => {
-  //     setInitialRoute(value === 'true' ? 'Main' : 'Welcome')
-  //   })
-  // }, [])
+  useEffect(() => {
+    AsyncStorage.getItem('competencias').then((value) => {
+      setInitialRoute(value?.length ? 'Main' : 'Welcome')
+    })
+  }, [])
+
+  if (!initialRoute) {
+    return null
+  }
 
   return (
     <Stack.Navigator
-      initialRouteName="Welcome"
+      initialRouteName={initialRoute}
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
