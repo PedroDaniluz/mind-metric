@@ -1,7 +1,7 @@
 import { Pressable, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 import theme from '../styles/theme'
-import { css } from 'styled-components'
+import { css } from 'styled-components/native'
 
 type Variant = 'default' | 'bordered'
 

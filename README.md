@@ -64,11 +64,10 @@ yarn
    ```
 
 3. Use o aplicativo [Expo Go](https://expo.dev/client) no seu dispositivo móvel ou um emulador/simulador para visualizar o app.
-4. **Recomendação:** Para melhor compatibilidade visual e funcional, utilize um emulador Android/iOS (como Android Studio ou Xcode) ou um dispositivo físico conectado via USB. A execução via navegador (Web) pode apresentar problemas de estilização em algumas dependências e não é recomendada para testes completos.
 
-5. Para criar e gerenciar emuladores Android (AVDs), consulte a [documentação oficial do Android Studio](https://developer.android.com/studio/run/managing-avds?authuser=1&hl=pt-br).
+4. Para criar e gerenciar emuladores Android (AVDs), consulte a [documentação oficial do Android Studio](https://developer.android.com/studio/run/managing-avds?authuser=1&hl=pt-br).
 
-6. Para criar e gerenciar simuladores iOS, utilize o Xcode no macOS. Consulte a [documentação oficial da Apple](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
+5. Para criar e gerenciar simuladores iOS, utilize o Xcode no macOS. Consulte a [documentação oficial da Apple](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
 
 > **Observação:** Certifique-se de que todas as dependências estejam instaladas e o ambiente configurado corretamente.
 

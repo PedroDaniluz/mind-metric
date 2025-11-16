@@ -15,7 +15,7 @@ export default {
       shadowColor: 'rgba(0, 0, 0, 0.25)',
       shadowOffset: { width: 0, height: 0 },
       shadowRadius: 8,
-      elevation: 4,
+      elevation: 8,
     },
   },
 }

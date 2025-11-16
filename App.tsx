@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import Routes from './src/navigation/AppNavigator'
+import Routes from './src/navigation'
 import {
   useFonts,
   Lato_300Light,

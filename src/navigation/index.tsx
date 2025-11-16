@@ -9,18 +9,19 @@ const Stack = createNativeStackNavigator()
 export default function Routes() {
   const { showOnboarding, loading } = useAsyncStorageHook()
 
-  if (loading) {
-    return null
-  }
+  if (loading) return null
 
   return (
-    <Stack.Navigator
-      initialRouteName={showOnboarding ? 'Welcome' : 'Main'}
-      screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Onboarding" component={Onboarding} />
-      <Stack.Screen name="Main" component={TabRoutes} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {showOnboarding ? (
+        <>
+          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="Onboarding" component={Onboarding} />
+          <Stack.Screen name="Main" component={TabRoutes} />
+        </>
+      ) : (
+        <Stack.Screen name="Main" component={TabRoutes} />
+      )}
     </Stack.Navigator>
   )
 }

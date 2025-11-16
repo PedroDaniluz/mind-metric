@@ -3,5 +3,5 @@ import { RootStackParamList } from '../../types/navigation'
 
 export type NavigationProps = NativeStackNavigationProp<
   RootStackParamList,
-  'Welcome'
+  'Onboarding'
 >

@@ -9,6 +9,7 @@ export const StyledPageContainer = styled(PageContainer)`
 export const HistoryCardShadow = styled(CardShadow)`
   padding: 12px;
   flex-direction: row;
+  align-items: stretch;
 `
 export const HistoryContent = styled.View`
   flex: 1;
@@ -36,14 +37,19 @@ export const SkillItem = styled.Text`
 `
 export const RatingBarContainer = styled.View`
   width: 10%;
-  height: 100%;
+  align-self: stretch;
   background-color: #e0e0e0;
   border-radius: 4px;
   overflow: hidden;
   justify-content: flex-end;
+  position: relative;
 `
 export const RatingBarFill = styled.View`
-  height: 100%;
+  width: 100%;
   background-color: ${theme.colors.primary};
   border-radius: 4px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `
