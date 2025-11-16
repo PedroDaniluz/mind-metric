@@ -102,4 +102,4 @@ Após iniciar o app, você terá acesso às seguintes funcionalidades principais
 <h2 id="video">🎥 Vídeo Demonstrativo</h2>
 Confira abaixo um vídeo curto apresentando as principais funcionalidades do app em ação:
 
-👉 [Clique aqui para assistir]
+👉 [Clique aqui para assistir](https://youtu.be/S8fA5H90yDI)
