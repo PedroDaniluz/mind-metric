@@ -7,8 +7,8 @@
 
 <div align="center">
   <a href="#colaboradores">Participantes</a> •
-  <a href="#pré-requisitos">Pré-requisitos</a> •
-  <a href="#instalação">Instalação</a> •
+  <a href="#pre-requisitos">Pré-requisitos</a> •
+  <a href="#instalacao">Instalação</a> •
   <a href="#rodando-o-projeto">Rodando o projeto</a> •
   <a href="#uso">Como usar</a> •
   <a href="#video">Vídeo demonstrativo</a>
@@ -26,13 +26,13 @@
 | Kenzo Schiavone Inoue dos Santos | RM99890 |
 | Pedro Daniluz                    | RM97697 |
 
-<h2 id="pré-requisitos">💻 Pré-requisitos</h2>
+<h2 id="pre-requisitos">💻 Pré-requisitos</h2>
 
 - [Node.js](https://nodejs.org/)
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
 - [Gerenciador de pacotes: [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) ou [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
 
-<h2 id="instalação">🚀 Instalação</h2>
+<h2 id="instalacao">🚀 Instalação</h2>
 
 Clone o repositório:
 
